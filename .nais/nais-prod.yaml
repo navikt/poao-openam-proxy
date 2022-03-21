@@ -1,12 +1,12 @@
 kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
-  name: poao_openam_proxy
+  name: poao-openam-proxy
   namespace: pto
   labels:
     team: pto
 spec:
-  image: ghcr.io/navikt/poao_openam_proxy/poao_openam_proxy:{{version}}
+  image: ghcr.io/navikt/poao-openam-proxy/poao-openam-proxy:{{version}}
   port: 8080
   webproxy: true
   ingresses:

@@ -6,7 +6,7 @@ metadata:
   labels:
     team: pto
 spec:
-  image: ghcr.io/navikt/poao_openam_proxy/poao_openam_proxy:{{version}}
+  image: ghcr.io/navikt/poao-openam-proxy/poao-openam-proxy:{{version}}
   port: 8080
   webproxy: true
   ingresses:

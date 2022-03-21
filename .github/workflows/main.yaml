@@ -6,7 +6,7 @@ on:
       - main
 env:
   IMAGE_TAG: ${{ github.sha }}
-  IMAGE: ghcr.io/${{ github.repository }}/poao_openam_proxy
+  IMAGE: ghcr.io/${{ github.repository }}/poao-openam-proxy
   PRINT_PAYLOAD: true
 
 jobs:
