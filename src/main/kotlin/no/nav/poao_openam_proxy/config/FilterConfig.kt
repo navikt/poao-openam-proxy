@@ -8,10 +8,13 @@ import no.nav.common.auth.oidc.filter.OidcAuthenticatorConfig
 import no.nav.common.auth.utils.UserTokenFinder
 import no.nav.common.rest.filter.ConsumerIdComplianceFilter
 import no.nav.common.utils.EnvironmentUtils
+import no.nav.poao_openam_proxy.config.properties.EnvironmentProperties
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 
+@Profile("default")
 @Configuration
 class FilterConfig {
 

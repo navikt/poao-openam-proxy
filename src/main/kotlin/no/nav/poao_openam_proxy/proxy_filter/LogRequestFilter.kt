@@ -5,7 +5,7 @@ import com.netflix.zuul.context.RequestContext
 import no.nav.common.log.LogFilter
 import org.slf4j.LoggerFactory
 
-class PostRequestZuulFilter : ZuulFilter() {
+class LogRequestFilter : ZuulFilter() {
 
 	private val log = LoggerFactory.getLogger(this::class.java)
 

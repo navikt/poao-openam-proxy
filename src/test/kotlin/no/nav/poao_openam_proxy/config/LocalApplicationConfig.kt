@@ -3,7 +3,6 @@ package no.nav.poao_openam_proxy.config
 import no.nav.common.auth.context.AuthContextHolder
 import no.nav.common.auth.context.AuthContextHolderThreadLocal
 import no.nav.common.sts.ServiceToServiceTokenProvider
-import no.nav.common.sts.utils.AzureAdServiceTokenProviderBuilder
 import no.nav.poao_openam_proxy.config.properties.EnvironmentProperties
 import no.nav.poao_openam_proxy.config.properties.ProxyProperties
 import no.nav.poao_openam_proxy.proxy_filter.LogRequestFilter
@@ -12,13 +11,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Profile
 
-@Profile("default")
 @Configuration
 @EnableZuulProxy
 @EnableConfigurationProperties(EnvironmentProperties::class, ProxyProperties::class)
-class ApplicationConfig {
+class LocalApplicationConfig {
 
 	@Bean
 	fun postRequestZuulFilter(): LogRequestFilter {
@@ -41,9 +38,7 @@ class ApplicationConfig {
 
 	@Bean
 	fun serviceToServiceTokenProvider(): ServiceToServiceTokenProvider {
-		return AzureAdServiceTokenProviderBuilder.builder()
-			.withEnvironmentDefaults()
-			.build()
+		return ServiceToServiceTokenProvider { serviceName, namespace, cluster -> "token" }
 	}
 
 }

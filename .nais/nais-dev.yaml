@@ -42,3 +42,5 @@ spec:
   env:
     - name: MULIGHETSROMMET_API_URL
       value: https://mulighetsrommet-api.dev.intern.nav.no
+    - name: MULIGHETSROMMET_SCOPE
+      value: api://dev-gcp.team-mulighetsrommet.mulighetsrommet-api/.default
