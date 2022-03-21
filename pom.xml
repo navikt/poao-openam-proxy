@@ -18,7 +18,7 @@
     <properties>
         <java.version>11</java.version>
         <kotlin.version>1.4.21</kotlin.version>
-        <common.version>2.2022.02.02_07.23-5e0869d3bc69</common.version>
+        <common.version>2.2022.03.18_08.02-59d0fb64d9d6</common.version>
     </properties>
 
     <dependencies>
@@ -64,6 +64,11 @@
             <version>2.2.9.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>no.nav.common</groupId>
+            <artifactId>auth</artifactId>
+            <version>${common.version}</version>
+        </dependency>
         <dependency>
             <groupId>no.nav.common</groupId>
             <artifactId>log</artifactId>

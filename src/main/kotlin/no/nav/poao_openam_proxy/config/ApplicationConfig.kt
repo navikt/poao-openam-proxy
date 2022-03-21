@@ -1,9 +1,9 @@
 package no.nav.poao_openam_proxy.config
 
-import no.nav.common.rest.filter.ConsumerIdComplianceFilter
-import no.nav.common.utils.EnvironmentUtils
+import no.nav.common.auth.context.AuthContextHolder
+import no.nav.common.auth.context.AuthContextHolderThreadLocal
 import no.nav.poao_openam_proxy.proxy_filter.PostRequestZuulFilter
-import org.springframework.boot.web.servlet.FilterRegistrationBean
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Profile
 @Profile("default")
 @Configuration
 @EnableZuulProxy
+@EnableConfigurationProperties
 class ApplicationConfig {
 
 	@Bean
@@ -20,12 +21,8 @@ class ApplicationConfig {
 	}
 
 	@Bean
-	fun complianceFilterRegistrationBean(): FilterRegistrationBean<ConsumerIdComplianceFilter> {
-		val registration = FilterRegistrationBean<ConsumerIdComplianceFilter>()
-		registration.filter = ConsumerIdComplianceFilter(EnvironmentUtils.isDevelopment().orElse(false))
-		registration.order = 0
-		registration.addUrlPatterns("/proxy/*")
-		return registration
+	fun authContextHolder(): AuthContextHolder {
+		return AuthContextHolderThreadLocal.instance()
 	}
 
 }

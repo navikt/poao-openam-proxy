@@ -37,6 +37,8 @@ spec:
   azure:
     application:
       enabled: true
+  envFrom:
+    - configmap: pto-config
   env:
     - name: MULIGHETSROMMET_API_URL
       value: https://mulighetsrommet-api.dev.intern.nav.no
