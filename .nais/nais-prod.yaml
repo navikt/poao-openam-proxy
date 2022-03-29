@@ -14,12 +14,12 @@ spec:
     - https://app.intern.nav.no/poao-openam-proxy
   prometheus:
     enabled: true
-    path: /internal/prometheus
+    path: /poao-openam-proxy/internal/prometheus
   readiness:
-    path: /internal/health/readiness
+    path: /poao-openam-proxy/internal/health/readiness
     initialDelay: 20
   liveness:
-    path: /internal/health/liveness
+    path: /poao-openam-proxy/internal/health/liveness
     initialDelay: 20
   replicas:
     min: 1
@@ -40,6 +40,3 @@ spec:
   env:
     - name: MULIGHETSROMMET_API_URL
       value: https://mulighetsrommet-api.intern.nav.no
-    - name: MULIGHETSROMMET_SCOPE
-      value: api://prod-gcp.team-mulighetsrommet.mulighetsrommet-api/.default
-
