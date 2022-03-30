@@ -38,5 +38,7 @@ spec:
   envFrom:
     - configmap: pto-config
   env:
+    - name: NAIS_CLUSTER_NAME
+      value: prod-gcp
     - name: MULIGHETSROMMET_API_URL
       value: https://mulighetsrommet-api.intern.nav.no
