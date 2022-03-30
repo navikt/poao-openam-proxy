@@ -8,6 +8,7 @@ import no.nav.poao_openam_proxy.config.properties.EnvironmentProperties
 import no.nav.poao_openam_proxy.config.properties.ProxyProperties
 import no.nav.poao_openam_proxy.proxy_filter.LogRequestFilter
 import no.nav.poao_openam_proxy.proxy_filter.TokenExchangeFilter
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy
 import org.springframework.context.annotation.Bean
@@ -27,11 +28,13 @@ class ApplicationConfig {
 
 	@Bean
 	fun preRequestZuulFilter(
+		@Value("\${server.servlet.context-path:}")
+		servletContextPath: String,
 		authContextHolder: AuthContextHolder,
 		serviceToServiceTokenProvider: ServiceToServiceTokenProvider,
 		proxyProperties: ProxyProperties
 	): TokenExchangeFilter {
-		return TokenExchangeFilter("/proxy", authContextHolder, serviceToServiceTokenProvider, proxyProperties)
+		return TokenExchangeFilter("$servletContextPath/proxy", authContextHolder, serviceToServiceTokenProvider, proxyProperties)
 	}
 
 	@Bean
