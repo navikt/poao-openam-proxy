@@ -1,6 +1,6 @@
 # POAO OpenAM Proxy
 
-Proxy som gjør det mulig å kontakte tjenester i FSS fra GCP.
+Proxy som gjør det mulig å kontakte tjenester i GCP fra FSS med OpenAM veileder token.
 
 ## Routes
 
